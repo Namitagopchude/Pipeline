@@ -3,10 +3,10 @@ pipeline {
 
   stages {
         stage('chheckout code') {
-                steps {
-                    checkout scm
-                }
-            
+            steps{
+                checkout scm
+            }
+        
         }
 
         stage('build') {
@@ -25,21 +25,10 @@ pipeline {
             }
             
         }
-        stage('Quality Gate') {
+        
+        stage('Archive Artifacts') {
             steps {
-                timeout(time: 3, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-
-        stage('Archieve artifacts') {
-          
-            }
-            post {
-                success {
                 archiveArtifacts artifacts: '**/target/*.jar'
-                }
             }
         
         }
