@@ -31,7 +31,7 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
-                    reportDir: "${HTML_REPORT_PATH}",
+                    reportDir: 'target/site/jacoco',
                     reportFiles: 'index.html',
                     reportName: 'Code Coverage'
                 ])
