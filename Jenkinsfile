@@ -1,10 +1,6 @@
 pipeline {
    agent any
-   def COLOR_MAP = [
-        'SUCCESS' : 'good'
-        'FAILURE' : 'danger'
-   ]
-
+   
    environment {
         JIRA_SITE = 'jenkins-jira'  // Make sure this matches the "Jira Site" configured in Jenkins
     }
@@ -74,6 +70,10 @@ pipeline {
         }
     }
 
-    Post 
+    post {
+        always{
+            slackSend channel: '#all-jenkinsnotifier', message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+    }
 
 }
