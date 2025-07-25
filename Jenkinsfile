@@ -52,5 +52,18 @@ pipeline {
                  
             }
         }
+        stage('Update Jira') {
+            steps {
+                script {
+                    jiraAddComment(
+                        idOrKey: 'JEN-1',
+                        comment: '✅ Build completed successfully.',
+                        site: env.JIRA_SITE,
+                        failOnError: false
+                    )
+                }
+            }
+        }
     }
+
 }
