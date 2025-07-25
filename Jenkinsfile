@@ -25,6 +25,18 @@ pipeline {
             }
             
         }
+        stage('Archive HTML Reports') {
+            steps {
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: "${HTML_REPORT_PATH}",
+                    reportFiles: 'index.html',
+                    reportName: 'Code Coverage'
+                ])
+            }
+        }
         
         stage('Archive Artifacts') {
             steps {
