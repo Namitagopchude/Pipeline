@@ -1,6 +1,10 @@
 pipeline {
    agent any
 
+   environment {
+        JIRA_SITE = 'jenkins-jira'  // Make sure this matches the "Jira Site" configured in Jenkins
+    }
+
   stages {
         stage('chheckout code') {
             steps{
