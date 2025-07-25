@@ -20,7 +20,7 @@ pipeline {
 
             steps {
               withCredentials([string(credentialsId: 'Sonarqube', variable: 'Sonarqube')]) {
-                bat 'mvn sonar:sonar -Dsonar.projectKey=Jenkins-maven -Dsonar.projectName="Jenkins-maven" -Dsonar.token=Sonarqube'
+                bat 'mvn sonar:sonar -Dsonar.projectKey=Jenkins-maven -Dsonar.projectName="Jenkins-maven" -Dsonar.token=%Sonarqube%'
               }
             }
             
